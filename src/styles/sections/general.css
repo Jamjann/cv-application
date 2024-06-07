@@ -1,0 +1,39 @@
+header {
+  border-bottom: 1px solid var(--light-grey);
+  margin-bottom: 3em;
+  padding-bottom: 3em;
+  .name {
+    width: 100%;
+    font-size: 2em;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  .job {
+    text-align: left;
+    margin-bottom: 20px;
+    h3 {
+      font-size: 1.4em;
+      margin: 0;
+    }
+  }
+}
+
+.header > div {
+  width: 100%;
+}
+.general-header {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.general-detail {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  > .short-detail {
+    width: 48%;
+    text-align: left;
+  }
+}

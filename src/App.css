@@ -1,8 +1,60 @@
+@font-face {
+  font-family: "sodosans";
+  src: url("./assets/fonts/sodosans.woff") format("woff"),
+    url("./assets/fonts/sodosans.woff2") format("woff2");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "sodosans-semibold";
+  src: url("./assets/fonts/sodosans-semibold.woff") format("woff"),
+    url("./assets/fonts/sodosans-semibold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+:root {
+  --main-color: #111;
+  --bg-color: #e2e8f0;
+  --light-grey: #a2a2a2;
+  --middle-grey: #283240;
+  --dark-grey: #161b27;
+  --yellow: #ffa200;
+  --text-normal: "sodosans";
+  --text-bold: "sodosans-semibold";
+  --box-shadow: 0 2px 18px 0px #ececec;
+
+  --palette-red: #e06187;
+  --palette-orange: #e5986a;
+  --palette-yellow: #f4d86f;
+  --palette-green: #b9dc7c;
+  --palette-cyan: #9cdce8;
+  --palette-blue: #7594b6;
+  --palette-purple: #a69cef;
+  --palette-pink: #cc99b3;
+}
+html,
+body {
+  font-family: var(--text-normal);
+  font-size: 14px;
+  /* color: var(--main-color); */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  a {
+    color: var(--palette-blue);
+  }
+  b {
+    font-family: var(--text-bold);
+  }
+  button {
+    cursor: pointer;
+  }
 }
 
 .logo {
