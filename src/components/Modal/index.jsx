@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "../../styles/components/modal.css";
 
-function Modal({ isOpen, onClose, children }) {
+function Modal({ isOpen, onClose, title, children }) {
   const ref = useRef();
 
   useEffect(() => {
@@ -14,10 +14,13 @@ function Modal({ isOpen, onClose, children }) {
 
   return (
     <dialog ref={ref}>
-      {/* <button className="close-btn" onClick={onClose}>
-        x
-      </button> */}
-      {children}
+      <div className="header">
+        <h3>{title}</h3>
+        <button className="close-btn" onClick={onClose}>
+          x
+        </button>
+      </div>
+      <div className="content">{isOpen && children}</div>
     </dialog>
   );
 }

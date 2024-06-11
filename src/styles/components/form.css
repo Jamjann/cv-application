@@ -6,9 +6,9 @@ ul {
 ul li {
   display: flex;
   margin-bottom: 10px;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
-  flex-direction: column;
+  flex-flow: row wrap;
 }
 li.submit {
   margin-top: 30px;
@@ -22,22 +22,16 @@ input[type="date"],
 input[type="url"],
 input[type="tel"],
 input[type="email"],
+input[type="month"],
 textarea {
   width: 100%;
   appearance: none;
   font-family: var(--text-normal);
   border-radius: 5px;
-  border: 1px solid var(--bg-color);
+  border: none;
   padding: 5px 10px;
   box-sizing: border-box;
   margin-top: 10px;
-}
-.submit-btn {
-  background-color: #111;
-  color: white;
-  padding: 10px 30px;
-  border-color: #fff;
-  margin-top: 20px;
 }
 
 fieldset[data-type="custom-select"] {
@@ -71,9 +65,19 @@ ul.fields {
   margin-bottom: 30px;
 }
 
-.close-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
-  margin-bottom: 10px;
+button + button {
+  margin-left: 1em;
+}
+form button {
+  color: white;
+  padding: 10px 30px;
+  margin-top: 20px;
+}
+.submit-btn {
+  background-color: #111;
+  border-color: #fff;
+}
+.required-icon {
+  color: var(--palette-red);
+  margin-left: 5px;
 }

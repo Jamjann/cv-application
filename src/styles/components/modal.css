@@ -1,5 +1,26 @@
 dialog {
-  width: 30%;
+  width: 35%;
   border-radius: 15px;
-  padding: 2em;
+  padding: 0;
+  .header {
+    padding: 1.5em;
+    border-bottom: 1px solid var(--line-color);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    h3 {
+      font-size: 1.4em;
+      margin: 0;
+    }
+  }
+  .content {
+    padding: 1.5em;
+  }
+  .close-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+  }
 }

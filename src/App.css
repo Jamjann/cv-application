@@ -14,13 +14,14 @@
 :root {
   --main-color: #111;
   --bg-color: #e2e8f0;
+  --line-color: rgb(140 140 140/0.2);
   --light-grey: #a2a2a2;
   --middle-grey: #283240;
   --dark-grey: #161b27;
   --yellow: #ffa200;
   --text-normal: "sodosans";
   --text-bold: "sodosans-semibold";
-  --box-shadow: 0 2px 18px 0px #ececec;
+  --box-shadow: 0 2px 18px 0px var(--line-color);
 
   --palette-red: #e06187;
   --palette-orange: #e5986a;
@@ -42,6 +43,7 @@ body {
 }
 
 #root {
+  width: 65%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;

@@ -1,0 +1,48 @@
+.section-header {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2em;
+  .topic {
+    font-size: 1.8em;
+    font-family: var(--text-bold);
+    margin: 0;
+  }
+}
+
+.block-header {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  text-align: left;
+  .topic {
+    font-size: 1.4em;
+    font-family: var(--text-bold);
+    margin: 0;
+  }
+  .sub-topic {
+    text-align: left;
+    margin-top: 5px;
+    h4 {
+      font-size: 1.1em;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      color: var(--light-grey);
+    }
+  }
+}
+
+.block-detail {
+  margin-top: 1em;
+  text-align: left;
+  p {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+}
