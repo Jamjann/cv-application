@@ -7,9 +7,20 @@ const educationFields = {
   description: { title: "Description", type: "textarea", isRequired: false },
 };
 
+const generalFields = {
+  firstName: { title: "First name", type: "text", isRequired: true },
+  lastName: { title: "Last name", type: "text", isRequired: true },
+  job: { title: "Job", type: "text", isRequired: true },
+  location: { title: "Location", type: "text", isRequired: true },
+  github: { title: "Github", type: "url", isRequired: false },
+  linkedIn: { title: "LinkedIn", type: "url", isRequired: false },
+  email: { title: "Email", type: "email", isRequired: true },
+  phone: { title: "Phone", type: "tel", isRequired: true },
+};
+
 const MODAL = {
   ADD: "add",
   EDIT: "edit",
 };
 
-export { MODAL, educationFields };
+export { MODAL, educationFields, generalFields };

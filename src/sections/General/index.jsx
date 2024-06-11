@@ -3,17 +3,7 @@ import "../../styles/sections/general.css";
 import ShortDetail from "../../components/ShortDetail";
 import Modal from "../../components/Modal";
 import Form from "../../components/Form";
-
-const fields = {
-  firstName: { title: "First name", type: "text", isRequired: true },
-  lastName: { title: "Last name", type: "text", isRequired: true },
-  job: { title: "Job", type: "text", isRequired: true },
-  location: { title: "Location", type: "text", isRequired: true },
-  github: { title: "Github", type: "url", isRequired: false },
-  linkedIn: { title: "LinkedIn", type: "url", isRequired: false },
-  email: { title: "Email", type: "email", isRequired: true },
-  phone: { title: "Phone", type: "tel", isRequired: true },
-};
+import { generalFields as fields } from "../../constant";
 
 const initialGeneralInfo = {
   firstName: "Phatthawipha",
@@ -30,18 +20,12 @@ function General() {
   const [generalInfo, setGeneralInfo] = useState(initialGeneralInfo);
   const [modal, setModal] = useState(false);
 
-  function handleSubmitFormBtn({ formData }) {
-    console.log("formData", formData);
+  function handleSubmitEditForm({ formData }) {
     setGeneralInfo(formData);
-
     setModal(false);
   }
 
-  function handleCancelFormBtn() {
-    setModal(false);
-  }
-
-  function handleCloseModalBtn() {
+  function handleCloseModal() {
     setModal(false);
   }
 
@@ -64,7 +48,7 @@ function General() {
             Edit
           </button>
         </div>
-        <div className="general-detail">
+        <div className="section-detail">
           <ShortDetail title="Location" val={generalInfo.location} />
           <ShortDetail title="Phone" val={generalInfo.phone} />
           <ShortDetail title="Email" val={generalInfo.email} />
@@ -74,13 +58,13 @@ function General() {
         </div>
       </>
 
-      <Modal isOpen={modal} onClose={handleCloseModalBtn}>
+      <Modal isOpen={modal} onClose={handleCloseModal} title="Edit general">
         <Form
           id="gi-form"
           fields={fields}
           data={generalInfo}
-          onSubmit={(formData) => handleSubmitFormBtn({ formData })}
-          onCancel={handleCancelFormBtn}
+          onSubmit={(formData) => handleSubmitEditForm({ formData })}
+          onCancel={handleCloseModal}
         ></Form>
       </Modal>
     </div>

@@ -53,7 +53,6 @@ function Education() {
   }
 
   function handleSubmitEditForm({ id, formData }) {
-    console.log("id", id, formData);
     const newList = educationInfo.map((item) => {
       if (item.id === id) {
         console.log("id!", id);

@@ -16,14 +16,14 @@
       margin: 0;
     }
   }
-}
 
-.general-detail {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  > .short-detail {
-    width: 48%;
-    text-align: left;
+  .section-detail {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    > .short-detail {
+      width: 48%;
+      text-align: left;
+    }
   }
 }
