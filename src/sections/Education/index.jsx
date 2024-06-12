@@ -6,6 +6,7 @@ import Modal from "../../components/Modal";
 import Form from "../../components/Form";
 import { MODAL, educationFields as fields } from "../../constant";
 import EducationList from "./list";
+import ConfirmDialog from "../../components/ConfirmDialog";
 
 const initialEducationInfo = [
   {
@@ -17,6 +18,7 @@ const initialEducationInfo = [
     endDate: "2015-05",
     description:
       '• Part-time tutor for high school students\n• Computer & Programming teaching assistant\n• Participate with subsidiary of PTT related to technical for the way to improve the corporation\n• Representative of GPSC to participate project, initiated by Microsoft\n• Participate with LINE corporation in the topic of "Settle online business against application Line shop"\n• Participate in activity of "Teaching junior to be programmer"',
+    isActive: true,
   },
   {
     id: crypto.randomUUID(),
@@ -27,6 +29,7 @@ const initialEducationInfo = [
     endDate: "2024-12",
     description:
       '• Part-time tutor for high school students\n• Computer & Programming teaching assistant\n• Participate with subsidiary of PTT related to technical for the way to improve the corporation\n• Representative of GPSC to participate project, initiated by Microsoft\n• Participate with LINE corporation in the topic of "Settle online business against application Line shop"\n• Participate in activity of "Teaching junior to be programmer"',
+    isActive: true,
   },
 ];
 const newEducationItem = {
@@ -43,8 +46,6 @@ function Education() {
   const [educationInfo, setEducationInfo] = useState(initialEducationInfo);
   const [modalId, setModalId] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
-
-  console.log("edu info", educationInfo);
 
   function handleSubmitAddForm({ formData }) {
     console.log("formdata", formData);
@@ -66,8 +67,26 @@ function Education() {
     setModalId(null);
   }
 
+  function handleSubmitDeleteForm({ id }) {
+    const updatedList = educationInfo.map((item) => {
+      if (item.id === id) {
+        return { ...item, isActive: false };
+      } else {
+        return item;
+      }
+    });
+
+    setEducationInfo(updatedList);
+    setModalId(null);
+  }
+
   function handleEditItem(id) {
     setModalId(MODAL.EDIT);
+    setActiveItem(id);
+  }
+
+  function handleDeleteItem(id) {
+    setModalId(MODAL.DELETE);
     setActiveItem(id);
   }
 
@@ -85,7 +104,11 @@ function Education() {
           </button>
         </div>
         <div className="section-detail">
-          <EducationList list={educationInfo} onEdit={handleEditItem} />
+          <EducationList
+            list={educationInfo.filter((i) => i.isActive)}
+            onEdit={handleEditItem}
+            onDelete={handleDeleteItem}
+          />
         </div>
       </>
 
@@ -115,6 +138,18 @@ function Education() {
           onSubmit={(formData) =>
             handleSubmitEditForm({ id: activeItem, formData })
           }
+          onCancel={handleCloseModal}
+        />
+      </Modal>
+
+      <Modal
+        isOpen={modalId === MODAL.DELETE}
+        onClose={handleCloseModal}
+        title="Delete education"
+      >
+        <ConfirmDialog
+          data={educationInfo.find((i) => i.id === activeItem)?.school}
+          onSubmit={() => handleSubmitDeleteForm({ id: activeItem })}
           onCancel={handleCloseModal}
         />
       </Modal>

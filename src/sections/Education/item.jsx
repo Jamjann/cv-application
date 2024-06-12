@@ -1,6 +1,6 @@
 import { formatDate } from "../../utils";
 
-function EducationItem({ item, onEdit }) {
+function EducationItem({ item, onEdit, onDelete }) {
   const { id, school, degree, field, startDate, endDate, description } = item;
   const study =
     (degree && degree) + (degree && field && ", ") + (field && field);
@@ -19,9 +19,14 @@ function EducationItem({ item, onEdit }) {
             <p>{date}</p>
           </div>
         </div>
-        <button type="button" onClick={() => onEdit(id)}>
-          Edit
-        </button>
+        <div className="actions">
+          <button type="button" onClick={() => onEdit(id)}>
+            Edit
+          </button>
+          <button type="button" onClick={() => onDelete(id)}>
+            Delete
+          </button>
+        </div>
       </div>
       <div className="block-detail">
         <p>{description}</p>

@@ -21,6 +21,7 @@ const generalFields = {
 const MODAL = {
   ADD: "add",
   EDIT: "edit",
+  DELETE: "delete",
 };
 
 export { MODAL, educationFields, generalFields };

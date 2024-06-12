@@ -46,3 +46,7 @@
     white-space: pre-wrap;
   }
 }
+
+button + button {
+  margin-left: 10px;
+}
