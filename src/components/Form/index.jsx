@@ -7,14 +7,12 @@ function Form({ id, fields, data, onSubmit, onCancel }) {
   const [formData, setFormData] = useState(data);
 
   // flexible field
-  function handleAddNewValue({ k, tempField }) {
-    if (!formData[k].includes(formData[tempField])) {
-      const newList = [...formData[k], formData[tempField]];
-      setFormData({ ...formData, [k]: newList, [tempField]: "" });
-    }
+  function handleAddNewValue({ k, val }) {
+    const newList = [...formData[k], val];
+    setFormData({ ...formData, [k]: newList });
   }
-  function handleDeleteValue({ k, id }) {
-    const newList = formData[k].filter((i) => i !== id);
+  function handleDeleteValue({ k, val }) {
+    const newList = formData[k].filter((i) => i !== val);
     setFormData({ ...formData, [k]: newList });
   }
 
@@ -22,7 +20,6 @@ function Form({ id, fields, data, onSubmit, onCancel }) {
   function handleValueChange({ e, k }) {
     setFormData({ ...formData, [k]: e.target.value });
   }
-
   function handleSubmitBtn(e) {
     e.preventDefault();
     const submittedData = {
@@ -38,17 +35,14 @@ function Form({ id, fields, data, onSubmit, onCancel }) {
       <ul>
         {Object.entries(fields).map(([k, v]) => {
           if (v.type === "flexible") {
-            const tempField = k + "Temp";
             return (
               <li key={k}>
                 <FlexibleField
-                  id={tempField}
+                  id={k}
                   attr={v}
-                  tempVal={formData[tempField]}
                   val={formData[k]}
-                  onChange={(e) => handleValueChange({ e, k: tempField })}
-                  onAdd={() => handleAddNewValue({ k, tempField })}
-                  onDelete={(id) => handleDeleteValue({ k, id })}
+                  onAdd={(val) => handleAddNewValue({ k, val })}
+                  onDelete={(val) => handleDeleteValue({ k, val })}
                 />
               </li>
             );

@@ -1,8 +1,18 @@
+import { useState } from "react";
 import "../../styles/components/flexibleField.css";
 
-function FlexibleField({ id, attr, tempVal, val, onAdd, onChange, onDelete }) {
+function FlexibleField({ id, attr, val, onAdd, onDelete }) {
   const title = attr.title;
   const isRequired = attr.isRequired;
+
+  const [tempVal, setTempVal] = useState("");
+
+  function handleAddValueToList() {
+    if (!val.includes(tempVal) && tempVal) {
+      onAdd(tempVal);
+      setTempVal("");
+    }
+  }
 
   return (
     <>
@@ -13,11 +23,15 @@ function FlexibleField({ id, attr, tempVal, val, onAdd, onChange, onDelete }) {
           type="text"
           name={id}
           id={id}
-          onChange={onChange}
+          onChange={(e) => setTempVal(e.target.value)}
           value={tempVal}
           required={isRequired}
         />
-        <button type="button" className="add-btn" onClick={onAdd}>
+        <button
+          type="button"
+          className="add-btn"
+          onClick={handleAddValueToList}
+        >
           Add
         </button>
       </div>

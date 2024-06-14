@@ -29,7 +29,6 @@ const newExperienceItem = {
   endDate: "",
   responsibilities: "",
   skills: [],
-  skillsTemp: "",
   isActive: true,
 };
 
