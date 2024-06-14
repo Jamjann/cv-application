@@ -49,7 +49,6 @@ function Education() {
   const [activeItem, setActiveItem] = useState(null);
 
   function handleSubmitAddForm({ formData }) {
-    console.log("formdata", formData);
     setEducationInfo([...educationInfo, formData]);
     setModalId(null);
   }
@@ -57,7 +56,6 @@ function Education() {
   function handleSubmitEditForm({ id, formData }) {
     const newList = educationInfo.map((item) => {
       if (item.id === id) {
-        console.log("id!", id);
         return formData;
       } else {
         return item;

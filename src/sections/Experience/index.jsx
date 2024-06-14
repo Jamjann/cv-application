@@ -38,7 +38,6 @@ function Experience() {
   const [activeItem, setActiveItem] = useState(null);
 
   function handleSubmitAddForm({ formData }) {
-    console.log("formdata", formData);
     setExperienceInfo([...experienceInfo, formData]);
     setModalId(null);
   }
@@ -46,7 +45,6 @@ function Experience() {
   function handleSubmitEditForm({ id, formData }) {
     const newList = experienceInfo.map((item) => {
       if (item.id === id) {
-        console.log("id!", id);
         return formData;
       } else {
         return item;

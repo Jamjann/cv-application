@@ -1,7 +1,7 @@
-.section {
-  border-bottom: 1px solid var(--light-grey);
-  margin-bottom: 3em;
-  padding-bottom: 3em;
+.section + .section {
+  border-top: 1px solid var(--light-grey);
+  margin-top: 3em;
+  padding-top: 3em;
 }
 
 .section-header {
