@@ -1,0 +1,35 @@
+.flexible-input {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+  align-items: stretch;
+  input {
+    margin: 0;
+  }
+}
+.add-btn {
+  padding: 5px 20px;
+  background-color: #111;
+  border-color: #fff;
+  margin-top: 0;
+  margin-left: 1em;
+}
+.value-list {
+  width: 100%;
+  display: flex;
+  margin-top: 1em;
+  flex-flow: row wrap;
+  .each-value {
+    padding: 5px 15px;
+    border: 1px solid var(--light-grey);
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+  .del-icon {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    margin-left: 15px;
+    color: var(--palette-red);
+  }
+}

@@ -30,7 +30,7 @@ function General() {
   }
 
   return (
-    <div className="general-section">
+    <div className="general-section section">
       <>
         <div className="section-header">
           <div>

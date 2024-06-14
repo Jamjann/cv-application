@@ -1,9 +1,6 @@
 import "../../styles/components/confirmDialog.css";
 
-function ConfirmDialog({ data, onSubmit, onCancel }) {
-  // console.log("data", data);
-  const msg = 'Are you sure you want to delete your "' + data + '" education?';
-
+function ConfirmDialog({ msg, onSubmit, onCancel }) {
   return (
     <div className="confirm-dialog">
       <h4>{msg}</h4>

@@ -1,0 +1,15 @@
+.experience-section {
+  .item {
+    margin-bottom: 2em;
+  }
+  .skill-list {
+    display: flex;
+    margin-top: 2em;
+    .each-skill {
+      padding: 5px 15px;
+      border: 1px solid var(--light-grey);
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+  }
+}

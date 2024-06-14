@@ -1,0 +1,38 @@
+input[type="text"],
+input[type="date"],
+input[type="url"],
+input[type="tel"],
+input[type="email"],
+input[type="month"],
+textarea {
+  width: 100%;
+  appearance: none;
+  font-family: var(--text-normal);
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+fieldset[data-type="custom-select"] {
+  appearance: none;
+  border: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+fieldset[data-type="custom-select"] div[data-type="list"] {
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  box-shadow: var(--box-shadow);
+  margin-top: 8px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+fieldset[data-type="custom-select"] div[data-type="list"].active {
+  display: block;
+}

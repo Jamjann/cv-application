@@ -1,61 +1,51 @@
 import { useState } from "react";
 import "../../styles/sections/global.css";
-import "../../styles/sections/education.css";
+import "../../styles/sections/experience.css";
 
 import Modal from "../../components/Modal";
 import Form from "../../components/Form";
-import { MODAL, educationFields as fields } from "../../constant";
-import EducationList from "./list";
+import { MODAL, experienceFields as fields } from "../../constant";
+import ExperienceList from "./list";
 import ConfirmDialog from "../../components/ConfirmDialog";
 
-const initialEducationInfo = [
+const initialExperienceInfo = [
   {
     id: crypto.randomUUID(),
-    school: "Kasetsart University",
-    degree: "Bachelor of Engineering - BE",
-    field: "Computer Engineering",
-    startDate: "2011-05",
-    endDate: "2015-05",
-    description:
-      '• Part-time tutor for high school students\n• Computer & Programming teaching assistant\n• Participate with subsidiary of PTT related to technical for the way to improve the corporation\n• Representative of GPSC to participate project, initiated by Microsoft\n• Participate with LINE corporation in the topic of "Settle online business against application Line shop"\n• Participate in activity of "Teaching junior to be programmer"',
-    isActive: true,
-  },
-  {
-    id: crypto.randomUUID(),
-    school: "test",
-    degree: "",
-    field: "",
-    startDate: "2024-04",
-    endDate: "2024-12",
-    description:
-      '• Part-time tutor for high school students\n• Computer & Programming teaching assistant\n• Participate with subsidiary of PTT related to technical for the way to improve the corporation\n• Representative of GPSC to participate project, initiated by Microsoft\n• Participate with LINE corporation in the topic of "Settle online business against application Line shop"\n• Participate in activity of "Teaching junior to be programmer"',
+    company: "PTT Group",
+    position: "Internship Trainee",
+    startDate: "2014-04",
+    endDate: "2014-05",
+    responsibilities:
+      "• Website creation and development\n• Manage a database to store company information\n• Network configuration and troubleshooting\n• Contact other departments to coordinate with the IT network",
+    skills: ["sql", "css", "html"],
     isActive: true,
   },
 ];
-const newEducationItem = {
+const newExperienceItem = {
   id: null,
-  school: "",
-  degree: "",
-  field: "",
+  company: "",
+  position: "",
   startDate: "",
   endDate: "",
-  description: "",
+  responsibilities: "",
+  skills: [],
+  skillsTemp: "",
   isActive: true,
 };
 
-function Education() {
-  const [educationInfo, setEducationInfo] = useState(initialEducationInfo);
+function Experience() {
+  const [experienceInfo, setExperienceInfo] = useState(initialExperienceInfo);
   const [modalId, setModalId] = useState(null);
   const [activeItem, setActiveItem] = useState(null);
 
   function handleSubmitAddForm({ formData }) {
     console.log("formdata", formData);
-    setEducationInfo([...educationInfo, formData]);
+    setExperienceInfo([...experienceInfo, formData]);
     setModalId(null);
   }
 
   function handleSubmitEditForm({ id, formData }) {
-    const newList = educationInfo.map((item) => {
+    const newList = experienceInfo.map((item) => {
       if (item.id === id) {
         console.log("id!", id);
         return formData;
@@ -64,12 +54,12 @@ function Education() {
       }
     });
 
-    setEducationInfo(newList);
+    setExperienceInfo(newList);
     setModalId(null);
   }
 
   function handleSubmitDeleteForm({ id }) {
-    const updatedList = educationInfo.map((item) => {
+    const updatedList = experienceInfo.map((item) => {
       if (item.id === id) {
         return { ...item, isActive: false };
       } else {
@@ -77,7 +67,7 @@ function Education() {
       }
     });
 
-    setEducationInfo(updatedList);
+    setExperienceInfo(updatedList);
     setModalId(null);
   }
 
@@ -96,17 +86,17 @@ function Education() {
   }
 
   return (
-    <div className="education-section section">
+    <div className="experience-section section">
       <>
         <div className="section-header">
-          <h2 className="topic">Education</h2>
+          <h2 className="topic">Experience</h2>
           <button type="button" onClick={() => setModalId(MODAL.ADD)}>
             Add
           </button>
         </div>
         <div className="section-detail">
-          <EducationList
-            list={educationInfo.filter((i) => i.isActive)}
+          <ExperienceList
+            list={experienceInfo.filter((i) => i.isActive)}
             onEdit={handleEditItem}
             onDelete={handleDeleteItem}
           />
@@ -116,12 +106,12 @@ function Education() {
       <Modal
         isOpen={modalId === MODAL.ADD}
         onClose={handleCloseModal}
-        title="Add education"
+        title="Add experience"
       >
         <Form
           id="add-edu-form"
           fields={fields}
-          data={newEducationItem}
+          data={newExperienceItem}
           onSubmit={(formData) => handleSubmitAddForm({ formData })}
           onCancel={handleCloseModal}
         />
@@ -130,12 +120,12 @@ function Education() {
       <Modal
         isOpen={modalId === MODAL.EDIT}
         onClose={handleCloseModal}
-        title="Edit education"
+        title="Edit experience"
       >
         <Form
           id="edit-edu-form"
           fields={fields}
-          data={educationInfo.find((i) => i.id === activeItem)}
+          data={experienceInfo.find((i) => i.id === activeItem)}
           onSubmit={(formData) =>
             handleSubmitEditForm({ id: activeItem, formData })
           }
@@ -146,13 +136,13 @@ function Education() {
       <Modal
         isOpen={modalId === MODAL.DELETE}
         onClose={handleCloseModal}
-        title="Delete education"
+        title="Delete experience"
       >
         <ConfirmDialog
           msg={
             'Are you sure you want to delete your "' +
-            educationInfo.find((i) => i.id === activeItem)?.school +
-            '" education?'
+            experienceInfo.find((i) => i.id === activeItem)?.company +
+            '" experience?'
           }
           onSubmit={() => handleSubmitDeleteForm({ id: activeItem })}
           onCancel={handleCloseModal}
@@ -162,4 +152,4 @@ function Education() {
   );
 }
 
-export default Education;
+export default Experience;

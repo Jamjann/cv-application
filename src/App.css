@@ -36,17 +36,17 @@ html,
 body {
   font-family: var(--text-normal);
   font-size: 14px;
-  /* color: var(--main-color); */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  place-items: flex-start !important;
 }
 
 #root {
   width: 65%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5em 2rem;
   text-align: center;
   a {
     color: var(--palette-blue);
